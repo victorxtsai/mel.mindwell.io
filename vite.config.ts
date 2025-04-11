@@ -6,7 +6,7 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/mindwell.io/', // 👈 Set this to your repo name!
+  base: '/', // 👈 Set this to your repo name!
   plugins: [react(), tailwindcss(), svgr()],
   resolve: {
     alias: {
