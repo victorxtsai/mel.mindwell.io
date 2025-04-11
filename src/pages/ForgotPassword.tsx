@@ -24,7 +24,7 @@ export default function ForgotPassword() {
     <AuthLayout title="Reset Password">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-white">
+          <label htmlFor="email" className="block text-sm/6 font-medium text-white">
             Email address
           </label>
           <input
@@ -33,7 +33,7 @@ export default function ForgotPassword() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
         </div>
 
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
 
         <button
           type="submit"
-          className="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600"
+          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Send Reset Email
         </button>

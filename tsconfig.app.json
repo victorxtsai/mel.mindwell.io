@@ -25,7 +25,7 @@
     /* Add this block to support @/ alias */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./*"]
     }
   },
 
