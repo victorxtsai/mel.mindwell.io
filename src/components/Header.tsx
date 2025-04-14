@@ -3,7 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '@/src/assets/logo.svg?react';
 import { auth } from '@/src/firebaseConfig';
-import { onAuthStateChanged, signOut, type User } from 'firebase/auth';
+import { signOut, type User } from 'firebase/auth';
 import { useEffect } from 'react';
 
 const navigation = [
@@ -17,12 +17,28 @@ export default function Header() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+    const fetchSession = async () => {
+      try {
+        const res = await fetch('/api/checkAuth', {
+          method: 'GET',
+          credentials: 'include', // 👈 includes the session cookie
+        });
   
-    return () => unsubscribe(); // cleanup listener on unmount
+        if (res.ok) {
+          const userData = await res.json();
+          setUser(userData); // your server should return user object
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error('Session fetch failed:', error);
+        setUser(null);
+      }
+    };
+  
+    fetchSession();
   }, []);
+  
 
   const handleSignOut = async () => {
     await signOut(auth);
