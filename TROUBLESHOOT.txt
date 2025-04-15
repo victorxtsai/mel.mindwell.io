@@ -26,3 +26,13 @@ Build Website
 npm run build
 cp dist/index.html dist/404.html
 npm run deploy
+
+NEED TO MAKE SURE 404.html is in the dist folder before deploying and after deploying.  if it magically disasppears, put a 404.html folder in public, and it will stay visible
+
+Build Website - BACK END
+firebase deploy
+firebase deploy --only functions
+firebase deploy --only hosting
+
+-- see which functions deploeyd
+firebase functions:list
